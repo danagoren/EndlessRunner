@@ -2,20 +2,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] MiniGameManager miniGameManager;
+    [SerializeField] private MiniGameManager miniGameManager;
+    [SerializeField] private Sprite[] runSprites;
+    [SerializeField] private Sprite jumpSprite;
+    [SerializeField] private float jumpSpeed = 20;
     private Rigidbody2D rb;
-
-    public Sprite[] runSprites;
     private int animFrames;
-    public Sprite jumpSprite;
-    public float jumpSpeed = 20;
     private SpriteRenderer sr;
     private int animCount;
     private GameObject player;
     private float animTimePeriod = 0.1f; //animation time per frame
     private float animTimePassed;
     private bool isJumping;
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -26,11 +25,11 @@ public class Player : MonoBehaviour
         isJumping = false;
     }
 
-    void Update()
+    private void Update()
     {
         Movement();
     }
-    void Movement()
+    private void Movement()
     {
         Jump();
         if (isJumping == false)
@@ -45,7 +44,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         if (Input.GetKey(KeyCode.Space) && isJumping == false)
         {
@@ -54,14 +53,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))//drop to ground
         {
             isJumping = false;
         }
     }
-    public void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))//jump from ground
         {

@@ -1,18 +1,17 @@
 using UnityEngine;
-using System.Threading.Tasks;
 using System.Collections;
 using TMPro;
 
 
 public class MiniGameManager : MonoBehaviour
 {
-    [SerializeField] GameObject[] Enemies;
-    [SerializeField] GameObject[] Clouds;
-    [SerializeField] TextMeshProUGUI TimerNum;
-    public Vector3 outOfFramePoint = new Vector3(-10f,0,0);
-    public Vector3 spawnPointRunningEnemy = new Vector3(10f, -2.8f, 0f);
-    public Vector3 spawnPointFlyingEnemy = new Vector3(10f, 0.88f, 0f);
-    public Vector3 spawnPointCloud = new Vector3(10f, 2.5f, 0f);
+    [SerializeField] private GameObject[] Enemies;
+    [SerializeField] private GameObject[] Clouds;
+    [SerializeField] private TextMeshProUGUI TimerNum;
+    [SerializeField] private Vector3 outOfFramePoint = new Vector3(-10f,0,0);
+    [SerializeField] private Vector3 spawnPointRunningEnemy = new Vector3(10f, -2.8f, 0f);
+    [SerializeField] private Vector3 spawnPointFlyingEnemy = new Vector3(10f, 0.88f, 0f);
+    [SerializeField] private Vector3 spawnPointCloud = new Vector3(10f, 2.5f, 0f);
     private int[] enemyQueue = { 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1 }; //13
     private float enemySpawnTimePeriod = 1.5f;
     private float cloudSpawnTimePeriod = 3.5f;
@@ -25,7 +24,7 @@ public class MiniGameManager : MonoBehaviour
     private int timerSeconds;
 
 
-    void Start()
+    private void Start()
     {
         timer = 0;
         timerMinutes = 0;
@@ -36,14 +35,14 @@ public class MiniGameManager : MonoBehaviour
         nextCloudSpawnTime = cloudSpawnTimePeriod; //start spawning clouds now
     }
 
-    void Update()
+    private void Update()
     {
         SpawnEnemy();
         SpawnCloud();
         UpdateTimer();
     }
 
-    public void SpawnEnemy()
+    private void SpawnEnemy()
     {
         nextEnemySpawnTime += Time.deltaTime;
         if (nextEnemySpawnTime >= enemySpawnTimePeriod)
@@ -63,7 +62,7 @@ public class MiniGameManager : MonoBehaviour
         }
     }
 
-    public void SpawnCloud()
+    private void SpawnCloud()
     {
         nextCloudSpawnTime += Time.deltaTime;
         if (nextCloudSpawnTime >= cloudSpawnTimePeriod)

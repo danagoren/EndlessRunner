@@ -1348,7 +1348,6 @@ MonoBehaviour:
   runSprites:
   - {fileID: -9044273682636020802, guid: 35fea6a8353ed486a9d11f326016cfc4, type: 3}
   - {fileID: 2335765321389519022, guid: 32877591834b34bf89f212ac9758ddbe, type: 3}
-  animFrames: 2
   jumpSprite: {fileID: -5160926848165206002, guid: 5ebfc67ab3fcb462881efd8552104659, type: 3}
   jumpSpeed: 20
 --- !u!1660057539 &9223372036854775807

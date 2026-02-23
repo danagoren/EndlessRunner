@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Vector2 speed = new Vector2(-9f, 0);
-    public Vector3 outOfFramePoint = new Vector3(-10f, 0, 0);
-    void Start()
+    [SerializeField] private Vector2 speed = new Vector2(-9f, 0);
+    [SerializeField] private Vector3 outOfFramePoint = new Vector3(-10f, 0, 0);
+    private void Start()
     {
         GetComponent<Rigidbody2D>().linearVelocity = speed; //go left
     }
 
-    void Update()
+    private void Update()
     {
         if (transform.position.x < outOfFramePoint.x) //when out of frame, destroy
         {
